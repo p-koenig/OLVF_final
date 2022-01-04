@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"gonum.org/v1/gonum/mat"
 	"math"
 )
@@ -71,4 +72,15 @@ func (ic *InstanceClassifier) regularization(fsc *FeatureSpaceClassifier) {
 			ic.val.SetVec(i, math.Min(1.0, params.lambda/(ic.val.AtVec(i)*fsc.val.AtVec(i)))*ic.val.AtVec(i))
 		}
 	}
+}
+
+func (ic *InstanceClassifier) print() {
+	c, _ := ic.val.Dims()
+	for i := 0; i < c; i++ {
+		fmt.Print(ic.val.At(i, 0))
+		if i != c-1 {
+			fmt.Print(" | ")
+		}
+	}
+	fmt.Println()
 }

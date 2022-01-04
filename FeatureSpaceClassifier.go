@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"gonum.org/v1/gonum/mat"
 	"math"
 )
@@ -65,4 +66,15 @@ func (fsc *FeatureSpaceClassifier) getProjectionsForGivenFeatureSpace(fs *Featur
 		}
 	}
 	return resExisting, resShared, resNew
+}
+
+func (fsc *FeatureSpaceClassifier) print() {
+	c, _ := fsc.val.Dims()
+	for i := 0; i < c; i++ {
+		fmt.Print(fsc.val.At(i, 0))
+		if i != c-1 {
+			fmt.Print(" | ")
+		}
+	}
+	fmt.Println()
 }

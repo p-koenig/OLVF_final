@@ -80,8 +80,19 @@ func main() {
 
 	// more inits
 	featureSpace := NewFeatureSpace()
+	fmt.Println("\n", "---- START ----", "\n")
 
 	for t := 0; t < params.numIter; t++ {
+
+		/// DEBUGGING
+		fmt.Println("\n", "------------------------------------------------------------")
+		fmt.Println("## Iteration ", t, "\n")
+		fmt.Println("\n", "## FSC at Start: ")
+		featureSpaceClassifier.print()
+		fmt.Println("\n", "## IC at Start: ")
+		instanceClassifier.print()
+		// DEBUGGING END
+
 		// 2
 		sample := df.getNextSample()
 		featureSpace.update(sample)
